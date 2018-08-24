@@ -448,7 +448,7 @@ var AppModule = /** @class */ (function () {
                 angularfire2_firestore__WEBPACK_IMPORTED_MODULE_9__["AngularFirestoreModule"],
                 angularfire2_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"],
                 angularfire2_auth__WEBPACK_IMPORTED_MODULE_11__["AngularFireAuthModule"],
-                ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrModule"].forRoot(),
+                ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrModule"].forRoot({ preventDuplicates: true }),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
@@ -720,10 +720,9 @@ var SigninComponent = /** @class */ (function () {
         var _this = this;
         this.authService = authService;
         this.login = function (form) {
-            console.log(form);
-            // const email = form.value.email.toLowerCase();
-            // const password = form.value.password;
-            // this.authService.signIn(email, password);
+            var email = form.value.email.toLowerCase();
+            var password = form.value.password;
+            _this.authService.signIn(email, password);
         };
         this.googleOAuth = function () { return _this.authService.googleOAuth(); };
     }
@@ -936,7 +935,7 @@ module.exports = "nav.navbar {\r\n  margin: 0 0 35px 0;\r\n}\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" routerLink=\"/welcome\">Restoregram</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarColor01\" aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li *ngIf=\"!authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/auth/signin\" routerLinkActive=\"active\">Sign In</a>\n      </li>\n      <li *ngIf=\"!authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/auth/signup\" routerLinkActive=\"active\">Sign Up</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/pictures/upload\" routerLinkActive=\"active\">Upload</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/pictures/convert\" routerLinkActive=\"active\">Convert B/W to Coloured</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/pictures/list\" routerLinkActive=\"active\">My Collection</a>\n      </li>\n\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" routerLink=\"/welcome\">Colorsnow.online</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarColor01\" aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li *ngIf=\"!authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/auth/signin\" routerLinkActive=\"active\">Sign In</a>\n      </li>\n      <li *ngIf=\"!authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/auth/signup\" routerLinkActive=\"active\">Sign Up</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/pictures/upload\" routerLinkActive=\"active\">Upload</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/pictures/convert\" routerLinkActive=\"active\">Convert B/W to Coloured</a>\n      </li>\n      <li *ngIf=\"authService.isAuthenticated()\" class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/pictures/list\" routerLinkActive=\"active\">My Collection</a>\n      </li>\n\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -2104,7 +2103,7 @@ var WelcomeComponent = /** @class */ (function () {
     function WelcomeComponent(authService, toastr) {
         this.authService = authService;
         this.toastr = toastr;
-        this.title = "Restoregram";
+        this.title = "Colorsnow.online";
     }
     WelcomeComponent.prototype.ngOnInit = function () {
         var _this = this;
